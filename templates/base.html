@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Stack Overflow</title>
+</head>
+<body>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/ask-question/">Ask Question</a>
+        <a href="/my-questions/">My Questions</a>
+        <a href="/create-category/">Create Category</a>
+        <a href="/logout/">Logout</a>
+        <a href="/help">Help?</a>
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

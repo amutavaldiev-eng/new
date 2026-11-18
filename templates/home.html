@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="box">
+    <h1>Welcome to Stack Overflow</h1>
+    <p>Ask questions, share knowledge and help others.</p>
+    <div class="home-buttons">
+        <a href="/ask-question/">
+            <button>Ask Question</button>
+        </a>
+        <a href="/answer/">
+            <button>Answer Questions</button>
+        </a>
+    </div>
+</div>
+
+<h2>Latest Questions</h2>
+{% for question in questions %}
+<div class="question">
+    <h3>{{question.title}}</h3>
+    <p>{{question.desc_ques}}</p>
+    <p>Category: {{question.category.name}}</p>
+    <p>Asked by: {{question.user.username}}</p>
+   <div class="question-links">
+        <a href="/question/{{question.id}}/">
+            <button>View Answers</button>
+        </a>
+</div>
+        <a href="/comments/{{question.id}}/">
+    <button>View Comments</button>
+        </a>
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock %}

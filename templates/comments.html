@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %} 
+<div class="comments-container">
+    <h2>Comments: {{question.title}}</h2>
+    {% for answer in question.answer_set.all %}
+        <div class="comment-box">
+            <h3>{{answer.body}}</h3>
+            <p>By: {{answer.user.username}}</p>
+            {% for comment in answer.comment_set.all %}
+                <p>{{comment.body}}</p>
+                <small>By: {{comment.user.username}}</small>
+            {% endfor %}
+            <a class="add-comment-btn" href="/create-comment/{{answer.id}}/">
+                Add Comment
+            </a>
+    {% endfor %}
+    <a class="home-btn" href="/home/">Home</a>
+</div>
+
+{% endblock %}

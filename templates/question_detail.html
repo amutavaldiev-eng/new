@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="box">
+    <h2>{{question.title}}</h2>
+    <p>{{question.desc_ques}}</p>
+    <p>Category: {{question.category.name}}</p>
+    <p>By: {{question.user.username}}</p>
+    <p>{{question.created_at}}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="radio" name="status" value="True">
+        <label>Solved</label>
+        <button type="submit">Save</button>
+    </form>
+</div>
+<h2>Answers</h2>
+{% for answer in answers %}
+    <div class="box">
+        <p>{{answer.body}}</p>
+        <p>By: {{answer.user.username}}</p>
+        {% for comment in answer.comment_set.all %}
+            <p>{{comment.user.username}}: {{comment.body}}</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+<a href="/create-answer/{{question.id}}/">Add Answer</a>
+<br>
+<a href="/home/">Home</a>
+
+{% endblock %}

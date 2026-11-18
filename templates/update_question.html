@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="box">
+<h2>Update Question</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{question.title}}" required>
+    <textarea name="desc_ques" required>{{question.desc_ques}}</textarea>
+    <select name="category">
+        {% for category in categories %}
+            <option value="{{category.id}}">{{category.name}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Update</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="box">
+    <h1>My Questions</h1>
+    <p>Manage all your questions here.</p>
+    <a href="/ask-question/">
+        <button>Ask New Question</button>
+    </a>
+</div>
+<h2>Your Questions</h2>
+{% for question in questions %}
+<div class="question">
+    <h3>{{question.title}}</h3>
+    <p>{{question.desc_ques}}</p>
+    <p>Category: {{question.category.name}}</p>
+    <div class="question-links">
+        <a href="/question/{{question.id}}/">
+            <button>View</button>
+        </a>
+        <a href="/question/{{question.id}}/update/">
+            <button>Update</button>
+        </a>
+        <a href="/question/{{question.id}}/delete/">
+            <button>Delete</button>
+        </a>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
